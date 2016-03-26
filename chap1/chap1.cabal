@@ -1,0 +1,94 @@
+name:                chap1
+version:             0.1.0.0
+synopsis:            Initial project template from stack
+description:         Please see README.md
+homepage:            http://github.com/githubuser/chap1#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2016 Author Here
+category:            Web
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     CountWords
+                      ,ReadFile
+                      ,ParseCsv
+                      ,ParseJson
+                      ,ParseXml
+                      ,ParseHtml
+  build-depends:       base >= 4.7 && < 5
+                      ,csv
+                      ,parsec
+                     , aeson
+                     , bytestring
+                     , hxt
+                     , split
+  default-language:    Haskell2010
+
+executable chap1-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , chap1
+  default-language:    Haskell2010
+
+executable http-test
+  hs-source-dirs:      test
+  main-is:             HttpSpec.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                      ,hspec
+                      ,hxt
+                      ,HandsomeSoup
+                      ,curl
+                     , chap1
+  default-language:    Haskell2010
+
+executable http-post-test
+  hs-source-dirs:      test
+  main-is:             HttpPostSpec.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                      ,hspec
+                      ,hxt
+                      ,HandsomeSoup
+                     , chap1
+                     , HTTP
+                     , network-uri
+  default-language:    Haskell2010
+
+executable mongoDB-test
+  hs-source-dirs:      test
+  main-is:             MongoDBSpec.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                      ,hspec
+                      ,mongoDB
+  default-language:    Haskell2010
+executable sql-test
+    hs-source-dirs:      test
+    main-is:             SqlSpec.hs
+    ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+    build-depends:       base
+                        ,hspec
+                        ,sqlite-simple
+    default-language:    Haskell2010
+test-suite chap1-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , chap1
+                     , hspec
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/githubuser/chap1
